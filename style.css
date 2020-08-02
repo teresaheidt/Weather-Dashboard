@@ -1,0 +1,42 @@
+.container {
+    text-align: center;
+}
+
+.navbar {
+    color:white;
+    justify-content: center;
+    background-color: deeppink;
+}
+
+.form-control {
+    font-size: small;
+
+}
+
+.list-group-item {
+    font-size: small;
+    color: rgb(86, 88, 88);
+}
+
+h2 {
+    font-size: 20px;
+    color: rgb(86, 88, 88);
+    padding-bottom: 10px;
+}
+
+.forecastBox {
+    height: 8rem;
+    width: 8rem;
+    background-color: rgb(96, 206, 214);
+    padding-left: 20px;
+    margin: 440px 10px;
+}
+
+.city {
+    color:deeppink;
+    margin: 5px;
+    cursor: pointer;
+  }
+  .city:hover {
+    background: blue;
+  }
