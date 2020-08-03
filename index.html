@@ -1,86 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link
-      rel="stylesheet"
-      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/css/bootstrap.min.css"
-    />
-    <link rel="stylesheet" href="style.css" />
-    <title>The Weather Dashboard</title>
-  </head>
 
-  <body>
-    <div class="container">
-      <nav class="navbar navbar-expand-lg">
-        <a class="navbar-brand">The Weather Dashboard</a>
-      </nav>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="style.css" />
+  <title>The Weather Dashboard</title>
+</head>
 
-      <div class="row">
-        <div class="col-4">
-          <div class="card" style="width: 14rem;">
-            <div class="card-body">
-                <h2>Search for a city:</h2>
-              <div class="input-group mb-3">
-                <div class="input-group-prepend">
-                  <i class="fa-fa-search"></i>
-                  <span class="input-group-text">
-                    
-                  </span>
-    
-                </div>
-               
-                <input
-                  id="add-city"
-                  type="text"
-                  class="form-control"
-                  placeholder="search by city"
-                />
-              </div>
-              <div class="card" style="background-color: pink;">
-                <ul class="list-group list-group-flush">
-                  <li class="city list-group-item">Austin</li>
-                  <li class="city list-group-item">Chicago</li>
-                  <li class="city list-group-item">New York</li>
-                  <li class="city list-group-item">Orlando</li>
-                  <li class="city list-group-item">San Francisco</li>
-                  <li class="city list-group-item">Seattle</li>
-                  <li class="city list-group-item">Denver</li>
-                  <li class="city list-group-item">Atlanta</li>
-                </ul>
-              </div>
+<body>
+  <div class="container"></div>
+  <header class="header header-expand-lg">
+    <a class="header-brand">The Weather Dashboard</a>
+  </header>
+
+  
+    <div class="col-4">
+      <div class="search-card" style="width: 14rem;">
+        <div class="card-body">
+          <h2>Search for a city:</h2>
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <button id="city-search" type="button">
+                <i class="fas fa-searcg">Search</i>
+              </button>
             </div>
+            <input id="add-city" type="text" class="form-control" placeholder="search by city" />
+          </div>
+          <div class="card" style="background-color: pink;">
+            <ul class="list-group list-group-flush history">
+          
+            </ul>
           </div>
         </div>
-    <div class="row">
-        <div class="col">
-    </div>
-        <div class="forecastBox">
-           
-        </div>
-        <div class="forecastBox">
-            
-        </div>
-        <div class="forecastBox">
-            
-        </div>
-        <div class="forecastBox">
-            
-        </div>
-        <div class="forecastBox">
-            
-        </div>
-
-    </div>
       </div>
     </div>
+    
+      <div class="col-8" id="today"></div>
+     
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="weather.js"></script>
-  </body>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="weather.js"></script>
+</body>
+
 </html>
