@@ -2,27 +2,33 @@
 $(document).ready(function(){
 var history = ['Chicago', 'New York', 'Orlando', 'San Francisco', 'Denver', 'Atlanta',];
 
+
+
 for(var i = 0; i < history.length; i ++ ) {
    makeRow(history[i])
 }
 
+// add a new city to the group
 function makeRow(text) {
    var li = $("<li>").addClass("list-group-item").text(text)
 
    $(".history").append(li)
 }
 
+// User can look for any city and the naame will display
 $("#city-search").on("click", function() {
    var city = $("#add-city").val();
    console.log(city)
 displayWeatherInfo(city)
 }) 
+
 // display the weather content
 function displayWeatherInfo(city) {
 
    if(history.indexOf(city) === -1) {
    history.push(city);
    makeRow(history[i])
+
    }
 
 var APIKey = 'd2edc2080024ef0841b4893641476d0a';  
