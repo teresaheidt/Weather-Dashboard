@@ -54,6 +54,11 @@ $(document).ready(function () {
          dataType: "json"
       })
 
+      // to show the day and date at the top of the page
+let d = new Date()
+document.querySelector("currentDay").innerHTML = d.toString();
+
+
          .then(function (response) {
             console.log(response)
         
@@ -61,13 +66,12 @@ $(document).ready(function () {
            
             var card = $("<div>").addClass("card-city");
             var cardBody = $("<div>").addClass("card-body");
+            var date = $("<div>").addClass("card");
             var cardTitle = $("<h3>").addClass("card-title").text(response.name);
             var temp = $("<h4>").addClass("card-text").text("Tempature: " + response.main.temp);
             var wind = $("<h4>").addClass("card-text").text("Wind Speed: " + response.wind.speed);
             var humidity = $("<h4>").addClass("card-text").text("Humidity: " + response.main.humidity);
-            // var weatherIcon = $("<img>");weatherIcon.attr("src", "https://openweathermap.org/img/w/" + weather.weather[0].icon + ".png");
-            // // $("#current-icon").empty();
-            // // $("#current-icon").append(weatherIcon);
+            
 
             $("#today").append(card.append(cardBody.append(cardTitle, temp, wind, humidity)))
 
