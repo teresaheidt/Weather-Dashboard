@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/css/bootstrap.min.css" />
+  
   <link rel="stylesheet" href="style.css" />
   <title>The Weather Dashboard</title>
 </head>
@@ -16,7 +17,6 @@
     <a class="header-brand">The Weather Dashboard</a>
   </header>
 
-  
     <div class="col-4">
       <div class="search-card" style="width: 14rem;">
         <div class="card-body">
@@ -24,22 +24,27 @@
           <div class="input-group mb-3">
             <div class="input-group-prepend">
               <button id="city-search" type="button">
-                <i class="fas fa-searcg">Search</i>
+                <i class="fa fa-search">Search</i>
               </button>
             </div>
+
             <input id="add-city" type="text" class="form-control" placeholder="search by city" />
           </div>
-          <div class="card" style="float: left; margin: 20px; background-color: pink;">
+          <div class="card" style="margin: 20px; background-color: pink;">
             <ul class="list-group list-group-flush history">
-          
             </ul>
+          
+          </div>
+          <div class="col-4">
+            <button id="resetBtn" style="margin-left: 48px; color: deeppink;">Reset</button>
           </div>
         </div>
       </div>
     </div>
-    
-      <div class="col-8" id="today"></div>
-     
+
+    <div class="col-8" id="today" style="margin-left: 350px; margin-bottom: 80px; margin-top: 10px;"></div>
+
+    <div class="col-8" id="forecast"></div>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="weather.js"></script>
