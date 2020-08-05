@@ -6,48 +6,45 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/css/bootstrap.min.css" />
-  
+
   <link rel="stylesheet" href="style.css" />
   <title>The Weather Dashboard</title>
 </head>
 
 <body>
-  <div class="container"></div>
-  <header class="header header-expand-lg">
-    <a class="header-brand">The Weather Dashboard</a>
-  </header>
+    <div class="container">
+      <header class="header header-expand-lg">
+        <a class="header-brand">The Weather Dashboard</a>
+      </header>
 
-    <div class="col-4">
-      <div class="search-card" style="width: 14rem;">
+    <div class="row">
+      <div class="col">
         <div class="card-body">
           <h2>Search for a city:</h2>
-          <div class="input-group mb-3">
-            <div class="input-group-prepend">
-              <button id="city-search" type="button">
-                <i class="fa fa-search">Search</i>
-              </button>
+            <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                <button id="city-search" type="button">
+                  <i class="fa fa-search">Search</i>
+                </button>
+              </div>
+              <input id="add-city" type="text" class="form-control" placeholder="search by city" />
             </div>
-
-            <input id="add-city" type="text" class="form-control" placeholder="search by city" />
-          </div>
-          <div class="card" style="margin: 20px; background-color: pink;">
-            <ul class="list-group list-group-flush history">
-            </ul>
-          
-          </div>
-          <div class="col-4">
-            <button id="resetBtn" style="margin-left: 48px; color: deeppink;">Reset</button>
+            <div class="card" style="margin: 20px; background-color: pink;">
+              <ul class="list-group list-group-flush history"></ul>
+            </div>
+            <div class="col">
+              <button id="resetBtn" style="margin-left: 48px; color: deeppink;">Reset</button>
+            </div>
           </div>
         </div>
-      </div>
-    </div>
+        <div class="col" id="today" style="margin-right: 350px; margin-top: 40px;">
+          <div class="col-8" id="forecast"></div>
+        </div>
 
-    <div class="col-8" id="today" style="margin-left: 350px; margin-bottom: 80px; margin-top: 10px;"></div>
+  </div>
 
-    <div class="col-8" id="forecast"></div>
-
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <script src="weather.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+      <script src="weather.js"></script>
 </body>
 
 </html>

@@ -65,7 +65,10 @@ $(document).ready(function () {
             var temp = $("<h4>").addClass("card-text").text("Tempature: " + response.main.temp);
             var wind = $("<h4>").addClass("card-text").text("Wind Speed: " + response.wind.speed);
             var humidity = $("<h4>").addClass("card-text").text("Humidity: " + response.main.humidity);
-         
+            // var weatherIcon = $("<img>");weatherIcon.attr("src", "https://openweathermap.org/img/w/" + weather.weather[0].icon + ".png");
+            // // $("#current-icon").empty();
+            // // $("#current-icon").append(weatherIcon);
+
             $("#today").append(card.append(cardBody.append(cardTitle, temp, wind, humidity)))
 
             getforecast(response.coord.lat, response.coord.lon);
