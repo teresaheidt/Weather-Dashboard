@@ -42,6 +42,20 @@ $(document).ready(function () {
          makeRow(history[i])
       }
 
+   var now = new Date();
+   var options = {
+    weekday: 'long',
+    year: 'numeric',
+    month: 'short',
+    day: 'numeric',
+    hour: '2-digit',
+    minute: '2-digit'
+};
+
+var today = now.toLocaleString('en-us', options);
+      // to show the day and date
+      // let date = new Date()
+
       var APIKey = 'd2edc2080024ef0841b4893641476d0a';
       
       // daily forecast URL   
@@ -54,11 +68,6 @@ $(document).ready(function () {
          dataType: "json"
       })
 
-      // to show the day and date at the top of the page
-let d = new Date()
-document.querySelector("currentDay").innerHTML = d.toString();
-
-
          .then(function (response) {
             console.log(response)
         
@@ -66,14 +75,17 @@ document.querySelector("currentDay").innerHTML = d.toString();
            
             var card = $("<div>").addClass("card-city");
             var cardBody = $("<div>").addClass("card-body");
-            var date = $("<div>").addClass("card");
             var cardTitle = $("<h3>").addClass("card-title").text(response.name);
+            // var date = $("<h4>").addClass("card-title").text(date.toLocaleDateString('en-US'));
+            var icon = $("<img>").attr("src", "https://openweathermap.org/img/w/" + response.weather[0].icon + ".png")
             var temp = $("<h4>").addClass("card-text").text("Tempature: " + response.main.temp);
             var wind = $("<h4>").addClass("card-text").text("Wind Speed: " + response.wind.speed);
             var humidity = $("<h4>").addClass("card-text").text("Humidity: " + response.main.humidity);
-            
 
-            $("#today").append(card.append(cardBody.append(cardTitle, temp, wind, humidity)))
+            console.log(response.weather[0].icon);
+            var todayDate = $("<div>").text(today);
+
+            $("#today").append(card.append(cardBody.append(icon, cardTitle, todayDate, temp, wind, humidity)))
 
             getforecast(response.coord.lat, response.coord.lon);
 
@@ -88,10 +100,10 @@ document.querySelector("currentDay").innerHTML = d.toString();
             if (uvindex <= 3) {
                 color = "green";
             }
-            else if (uvindex >= 3 || uvindex <= 6) {
+            else if (uvindex > 3 && uvindex <= 6) {
                 color = "yellow";
             }
-            else if (uvindex >= 6 || uvindex <= 8) {
+            else if (uvindex > 6 && uvindex <= 8) {
                 color = "orange";
             }
             else {
@@ -128,7 +140,6 @@ document.querySelector("currentDay").innerHTML = d.toString();
          console.log(res)
 
          }
-
 
       })
    }
