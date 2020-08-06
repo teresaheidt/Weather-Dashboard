@@ -36,3 +36,7 @@ h2 {
     font-size: 20px;
     color: rgb(86, 88, 88); 
 }
+
+.forecast {
+    height: 120px;
+}

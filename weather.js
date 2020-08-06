@@ -90,7 +90,7 @@ var today = now.toLocaleString('en-us', options);
             getforecast(response.coord.lat, response.coord.lon);
 
             //get UV Index
-            var uvURL = "http://api.openweathermap.org/data/2.5/uvi?appid=d2edc2080024ef0841b4893641476d0a&lat=" + response.coord.lat + "&lon=" + response.coord.lat;
+            var uvURL = "http://api.openweathermap.org/data/2.5/uvi?appid=d2edc2080024ef0841b4893641476d0a&lat=" + response.coord.lat + "&lon=" + response.coord.lon;
                $.ajax({
                url: uvURL,
                method: "GET"
@@ -123,7 +123,7 @@ var today = now.toLocaleString('en-us', options);
       var APIKey = 'd2edc2080024ef0841b4893641476d0a';
       
       // 5-Day forecast URL   
-      var queryURL = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&appid=${APIKey}&units=imperial`
+      var queryURL = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${APIKey}&units=imperial`
 
       // ajax call for the city being clicked
       $.ajax({
@@ -137,7 +137,7 @@ var today = now.toLocaleString('en-us', options);
       //for loop over res.daily.length
       for (i = 0; i < forecast.length; i++) {
          forecast[i].innerHTML = "";
-         console.log(res)
+         console.log(res);
 
          }
 
