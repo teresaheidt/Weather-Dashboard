@@ -32,6 +32,7 @@ $(document).ready(function () {
       var city = $("#add-city").val();
       console.log(city)
       displayWeatherInfo(city)
+      getForecast(city)
    })
 
    // display the weather content
@@ -118,7 +119,7 @@ var today = now.toLocaleString('en-us', options);
    }
 
    // get the forecast
-   function getforecast(city) {
+   function getForecast(city) {
       var APIKey = 'd2edc2080024ef0841b4893641476d0a';
       
       // 5-Day forecast URL   
@@ -130,6 +131,7 @@ var today = now.toLocaleString('en-us', options);
       }).then(function (res) {
          var newrow = $("<div>").attr("class", "forecast");
          console.log(res);
+
 
          $("#fiveDayForecast").append(newrow);
 
@@ -144,16 +146,19 @@ var today = now.toLocaleString('en-us', options);
 
             bodyDiv.append($("<p>").attr("class", "card-text").html("Temp: " + response.list[i].main.temp + " &#8457;"));
             bodyDiv.append($("<p>").attr("class", "card-text").text("Humidity: " + response.list[i].main.humidity + "%"));
-        
+
          $("#fiveDayForecast").empty();
           //for loop over res.daily.length
          for (var i = 0; i < response.length; i++) {
          response[i].innerHTML = "";
 
+
+      
+
          let forecastInfo = resList[i]
          let forecastDateTime = (res.list[i].dt_txt)
          if (forecastDateTime.match("12:00:00")) {
-            let forecastBlock = $("<div>").attr("class", "forecast-temp-0")
+            let forecastBlock = $("<div>").attr("class", "forecast")
        
 
             forecastBlock.append(forecastDate)
@@ -165,3 +170,4 @@ var today = now.toLocaleString('en-us', options);
       })
    }
 })
+
