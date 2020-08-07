@@ -85,7 +85,7 @@ var today = now.toLocaleString('en-us', options);
 
             $("#today").append(card.append(cardBody.append(icon, cardTitle, todayDate, temp, wind, humidity)))
 
-            getforecast(response.coord.lat, response.coord.lon);
+            // getforecast(response.coord.lat, response.coord.lon);
 
             //get UV Index
             var uvURL = "http://api.openweathermap.org/data/2.5/uvi?appid=d2edc2080024ef0841b4893641476d0a&lat=" + response.coord.lat + "&lon=" + response.coord.lon;
@@ -117,30 +117,51 @@ var today = now.toLocaleString('en-us', options);
       });
    }
 
-   function getforecast(lat, lon) {
+   // get the forecast
+   function getforecast(city) {
       var APIKey = 'd2edc2080024ef0841b4893641476d0a';
       
       // 5-Day forecast URL   
-      var queryURL = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${APIKey}&units=imperial`
-
+      var forecastURL = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${d2edc2080024ef0841b4893641476d0a}&units=imperial`;
       // ajax call for the city being clicked
       $.ajax({
-         url: queryURL,
+         url: forecastURL,
          method: 'GET',
-         dataType: "json"
       }).then(function (res) {
-        var forecast = res;
-        console.log(res);
-         // debugger
-         $("#forecast").empty();
-
-
-      //for loop over res.daily.length
-      for (i = 0; i < forecast.length; i++) {
-         forecast[i].innerHTML = "";
+         var newrow = $("<div>").attr("class", "forecast");
          console.log(res);
+
+         $("#fiveDayForecast").append(newrow);
+
+            var newCard = $("<div>").attr("class", "card text-white bg-primary");
+            newCol.append(newCard);
+            var cardHead = $("<div>").attr("class", "card-header").text(moment(response.list[i].dt, "X").format("MMM Do"));
+            newCard.append(cardHead);
+            var cardImg = $("<img>").attr("class", "card-img-top").attr("src", "https://openweathermap.org/img/wn/" + response.list[i].weather[0].icon + "@2x.png");
+            newCard.append(cardImg);
+            var bodyDiv = $("<div>").attr("class", "card-body");
+            newCard.append(bodyDiv);
+
+            bodyDiv.append($("<p>").attr("class", "card-text").html("Temp: " + response.list[i].main.temp + " &#8457;"));
+            bodyDiv.append($("<p>").attr("class", "card-text").text("Humidity: " + response.list[i].main.humidity + "%"));
+        
+         $("#fiveDayForecast").empty();
+          //for loop over res.daily.length
+         for (var i = 0; i < response.length; i++) {
+         response[i].innerHTML = "";
+
+         let forecastInfo = resList[i]
+         let forecastDateTime = (res.list[i].dt_txt)
+         if (forecastDateTime.match("12:00:00")) {
+            let forecastBlock = $("<div>").attr("class", "forecast-temp-0")
+       
+
+            forecastBlock.append(forecastDate)
+            $("#fiveDayForecast").append(forecastBlock)
          }
 
+         }
+     
       })
    }
 })
