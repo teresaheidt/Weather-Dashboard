@@ -1,13 +1,13 @@
 // city array
 $(document).ready(function () {
-   var history = ['Chicago', 'New York', 'Orlando', 'San Francisco', 'Denver', 'Atlanta',];
+   var history = ['Chicago', 'New York', 'Orlando', 'San Francisco', 'Denver', 'Atlanta'];
 
    // adding a click event to the city list
    $(document).on('click', ".city", function () {
       var showCity = $(this).text()
 
    // display weather when click on the button for the city
-      displayWeatherInfo(showCity)
+      displayWeatherInfo(showCity);
    })
 
    for (var i = 0; i < history.length; i++) {
@@ -39,7 +39,7 @@ $(document).ready(function () {
 
       if (history.indexOf(city) === -1) {
          history.push(city);
-         makeRow(history[i])
+         makeRow(history[history.length -1])
       }
 
    var now = new Date();
@@ -52,9 +52,8 @@ $(document).ready(function () {
     minute: '2-digit'
 };
 
+  // to show the day and date
 var today = now.toLocaleString('en-us', options);
-      // to show the day and date
-      // let date = new Date()
 
       var APIKey = 'd2edc2080024ef0841b4893641476d0a';
       
@@ -76,7 +75,6 @@ var today = now.toLocaleString('en-us', options);
             var card = $("<div>").addClass("card-city");
             var cardBody = $("<div>").addClass("card-body");
             var cardTitle = $("<h3>").addClass("card-title").text(response.name);
-            // var date = $("<h4>").addClass("card-title").text(date.toLocaleDateString('en-US'));
             var icon = $("<img>").attr("src", "https://openweathermap.org/img/w/" + response.weather[0].icon + ".png")
             var temp = $("<h4>").addClass("card-text").text("Tempature: " + response.main.temp);
             var wind = $("<h4>").addClass("card-text").text("Wind Speed: " + response.wind.speed);
@@ -131,14 +129,16 @@ var today = now.toLocaleString('en-us', options);
          method: 'GET',
          dataType: "json"
       }).then(function (res) {
-
+        var forecast = res;
+        console.log(res);
+         // debugger
          $("#forecast").empty();
+
 
       //for loop over res.daily.length
       for (i = 0; i < forecast.length; i++) {
          forecast[i].innerHTML = "";
          console.log(res);
-
          }
 
       })
