@@ -8,6 +8,7 @@ $(document).ready(function () {
 
    // display weather when click on the button for the city
       displayWeatherInfo(showCity);
+      getForecast(showCity);
    })
 
    for (var i = 0; i < history.length; i++) {
@@ -69,10 +70,11 @@ var today = now.toLocaleString('en-us', options);
       })
 
          .then(function (response) {
-            console.log(response)
+         
         
             $("#today").empty();
            
+            
             var card = $("<div>").addClass("card-city");
             var cardBody = $("<div>").addClass("card-body");
             var cardTitle = $("<h3>").addClass("card-title").text(response.name);
@@ -123,45 +125,34 @@ var today = now.toLocaleString('en-us', options);
       var APIKey = 'd2edc2080024ef0841b4893641476d0a';
       
       // 5-Day forecast URL   
-      var forecastURL = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${d2edc2080024ef0841b4893641476d0a}&units=imperial`;
+      var forecastURL = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${APIKey}&units=imperial`;
       // ajax call for the city being clicked
       $.ajax({
          url: forecastURL,
          method: 'GET',
-      }).then(function (res) {
-         var newrow = $("<div>").attr("class", "forecast");
-         console.log(res);
-
-
-         $("#fiveDayForecast").append(newrow);
-
-            var newCard = $("<div>").attr("class", "card text-white bg-primary");
-            newCol.append(newCard);
-            var cardHead = $("<div>").attr("class", "card-header").text(moment(response.list[i].dt, "X").format("MMM Do"));
-            newCard.append(cardHead);
-            var cardImg = $("<img>").attr("class", "card-img-top").attr("src", "https://openweathermap.org/img/wn/" + response.list[i].weather[0].icon + "@2x.png");
-            newCard.append(cardImg);
-            var bodyDiv = $("<div>").attr("class", "card-body");
-            newCard.append(bodyDiv);
-
-            bodyDiv.append($("<p>").attr("class", "card-text").html("Temp: " + response.list[i].main.temp + " &#8457;"));
-            bodyDiv.append($("<p>").attr("class", "card-text").text("Humidity: " + response.list[i].main.humidity + "%"));
+      }).then(function (response) {
+         console.log(response);
 
          $("#fiveDayForecast").empty();
-          //for loop over res.daily.length
-         for (var i = 0; i < response.length; i++) {
-         response[i].innerHTML = "";
-
-
-      
-
-         let forecastInfo = resList[i]
-         let forecastDateTime = (res.list[i].dt_txt)
+           
+         //for loop over res.daily.length
+         for (var i = 0; i < response.list.length; i++) {             
+         var newrow = $("<div>").attr("class", "forecast");
+         let forecastInfo = response.list[i]
+         let forecastDateTime = (response.list[i].dt_txt);
          if (forecastDateTime.match("12:00:00")) {
             let forecastBlock = $("<div>").attr("class", "forecast")
-       
 
-            forecastBlock.append(forecastDate)
+            var newCard = $("<div>").attr("class", "card text-white bg-primary");
+            var cardHead = $("<div>").attr("class", "card-header").text(moment(response.list[i].dt, "X").format("MMM Do"));
+            var cardImg = $("<img>").attr("class", "card-img-top").attr("src", "https://openweathermap.org/img/wn/" + response.list[i].weather[0].icon + "@2x.png");
+            var bodyDiv = $("<div>").attr("class", "card-body");
+        
+            bodyDiv.append($("<p>").attr("class", "card-text").html("Temp: " + response.list[i].main.temp + " &#8457;"));
+            bodyDiv.append($("<p>").attr("class", "card-text").text("Humidity: " + response.list[i].main.humidity + "%"));
+            
+            newCard.append(cardHead, cardImg, bodyDiv)
+            forecastBlock.append(newCard)
             $("#fiveDayForecast").append(forecastBlock)
          }
 
