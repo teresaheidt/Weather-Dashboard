@@ -17,7 +17,8 @@ The main color used for the app is pink. This color was chosen to provide the us
 * Javascript
 * Weather API
 # Img
-![weather](weather.png)
+![weather](assets/img/weather.png)
+
 # About the author
 Teresa Heidt Follow me on Instgram @teresaheidt and Facebook: Teresa Heidt
 
