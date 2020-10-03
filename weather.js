@@ -151,6 +151,8 @@ var today = now.toLocaleString('en-us', options);
             bodyDiv.append($("<p>").attr("class", "card-text").html("Temp: " + response.list[i].main.temp + " &#8457;"));
             bodyDiv.append($("<p>").attr("class", "card-text").text("Humidity: " + response.list[i].main.humidity + "%"));
             
+     
+
             newCard.append(cardHead, cardImg, bodyDiv)
             forecastBlock.append(newCard)
             $("#fiveDayForecast").append(forecastBlock)
